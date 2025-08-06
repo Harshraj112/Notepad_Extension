@@ -83,4 +83,4 @@ So, I built **StudyNotes Pro** — a Chrome extension that keeps your notes righ
 
 1. Clone this repository:
    ```bash
-   git clone [https://github.com/yourusername/studynotes-pro.git](https://github.com/Harshraj112/Notepad_Extension.git)
+   git clone https://github.com/Harshraj112/Notepad_Extension.git
