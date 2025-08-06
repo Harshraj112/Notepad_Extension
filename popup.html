@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudyNotes Pro</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      width: 350px;
+      min-height: 400px;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+    
+    .header {
+      padding: 20px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+    }
+    
+    .logo {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    
+    .subtitle {
+      font-size: 14px;
+      opacity: 0.9;
+    }
+    
+    .main-content {
+      padding: 20px;
+    }
+    
+    .status-card {
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 16px;
+      backdrop-filter: blur(10px);
+    }
+    
+    .status-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    
+    .status-info {
+      font-size: 14px;
+      opacity: 0.9;
+      line-height: 1.4;
+    }
+    
+    .quick-actions {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    
+    .action-btn {
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 8px;
+      padding: 12px;
+      color: white;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+    
+    .action-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateY(-2px);
+    }
+    
+    .action-btn .icon {
+      font-size: 18px;
+    }
+    
+    .settings-section {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+    
+    .settings-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    
+    .setting-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    
+    .setting-item:last-child {
+      margin-bottom: 0;
+    }
+    
+    .setting-label {
+      font-size: 14px;
+      opacity: 0.9;
+    }
+    
+    .toggle-switch {
+      position: relative;
+      width: 44px;
+      height: 24px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+    
+    .toggle-switch.active {
+      background: rgba(255, 255, 255, 0.4);
+    }
+    
+    .toggle-switch::after {
+      content: '';
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 20px;
+      height: 20px;
+      background: white;
+      border-radius: 50%;
+      transition: transform 0.2s ease;
+    }
+    
+    .toggle-switch.active::after {
+      transform: translateX(20px);
+    }
+    
+    .stats-section {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 16px;
+    }
+    
+    .stats-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+    
+    .stat-item {
+      text-align: center;
+      padding: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+    }
+    
+    .stat-value {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    
+    .stat-label {
+      font-size: 11px;
+      opacity: 0.8;
+    }
+    
+    .footer {
+      padding: 16px 20px;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.1);
+      font-size: 12px;
+      opacity: 0.8;
+    }
+    
+    .primary-btn {
+      background: rgba(255, 255, 255, 0.9);
+      color: #667eea;
+      border: none;
+      border-radius: 8px;
+      padding: 14px 20px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      width: 100%;
+      margin-bottom: 16px;
+    }
+    
+    .primary-btn:hover {
+      background: white;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
+    }
+    
+    .shortcuts {
+      font-size: 11px;
+      opacity: 0.7;
+      margin-top: 8px;
+    }
+    
+    .loading {
+      display: none;
+      text-align: center;
+      padding: 20px;
+      opacity: 0.8;
+    }
+    
+    .error {
+      background: rgba(255, 0, 0, 0.2);
+      border: 1px solid rgba(255, 0, 0, 0.3);
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 16px;
+      font-size: 13px;
+    }
+    
+    .success {
+      background: rgba(0, 255, 0, 0.2);
+      border: 1px solid rgba(0, 255, 0, 0.3);
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 16px;
+      font-size: 13px;
+    }
+    
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo">StudyNotes Pro</div>
+    <div class="subtitle">Smart Note-Taking for Students</div>
+  </div>
+  
+  <div class="main-content">
+    <div id="loading" class="loading">
+      <div>Loading...</div>
+    </div>
+    
+    <div id="error-message" class="error hidden"></div>
+    <div id="success-message" class="success hidden"></div>
+    
+    <button id="toggle-notepad" class="primary-btn">
+      <span id="toggle-text">Open Notepad</span>
+    </button>
+    
+    <div class="status-card">
+      <div class="status-title">Current Page</div>
+      <div class="status-info">
+        <div id="page-title">Detecting page...</div>
+        <div id="page-platform" style="font-size: 12px; margin-top: 4px; opacity: 0.7;"></div>
+      </div>
+    </div>
+    
+    <div class="quick-actions">
+      <button class="action-btn" id="smart-summary">
+        <!-- <span class="icon">🧠</span> -->
+        <span>Smart Summary</span>
+      </button>
+      <button class="action-btn" id="extract-keywords">
+        <!-- <span class="icon">🔑</span> -->
+        <span>Keywords</span>
+      </button>
+      <button class="action-btn" id="focus-mode">
+        <!-- <span class="icon">🎯</span> -->
+        <span>Focus Mode</span>
+      </button>
+      <button class="action-btn" id="export-notes">
+        <!-- <span class="icon">📤</span> -->
+        <span>Export</span>
+      </button>
+    </div>
+    
+    <div class="settings-section">
+      <div class="settings-title">Quick Settings</div>
+      
+      <div class="setting-item">
+        <span class="setting-label">Auto-detect Titles</span>
+        <div class="toggle-switch" id="auto-detect-toggle"></div>
+      </div>
+      
+      <div class="setting-item">
+        <span class="setting-label">Dark Mode</span>
+        <div class="toggle-switch" id="dark-mode-toggle"></div>
+      </div>
+      
+      <div class="setting-item">
+        <span class="setting-label">Pin Notepad</span>
+        <div class="toggle-switch" id="pin-toggle"></div>
+      </div>
+    </div>
+    
+    <div class="stats-section">
+      <div class="stats-title">Your Progress</div>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-value" id="total-notes">0</div>
+          <div class="stat-label">Total Notes</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" id="words-written">0</div>
+          <div class="stat-label">Words Written</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" id="study-sessions">0</div>
+          <div class="stat-label">Study Sessions</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" id="platforms-used">0</div>
+          <div class="stat-label">Platforms</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="footer">
+    <div class="shortcuts">
+      Shortcuts: Ctrl+Shift+N (Toggle) • Ctrl+Shift+F (Focus)
+    </div>
+    <div style="margin-top: 8px;">
+      <button id="open-options" style="background: none; border: none; color: white; opacity: 0.7; cursor: pointer; font-size: 12px;">
+        ⚙️ Advanced Settings
+      </button>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,0 +1,843 @@
+/* StudyNotes Pro - Main Styles */
+
+/* Keyword Highlighting */
+.study-notes-highlight {
+  background: linear-gradient(120deg, #a8e6cf 0%, #dcedc8 100%);
+  padding: 2px 4px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.study-notes-highlight:hover {
+  background: linear-gradient(120deg, #81c784 0%, #aed581 100%);
+  transform: scale(1.05);
+}
+
+/* Main Notepad Container */
+.study-notes-notepad {
+  position: fixed;
+  z-index: 10000;
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 14px;
+  min-width: 300px;
+  min-height: 400px;
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.study-notes-notepad.dark-mode {
+  background: #1e1e1e;
+  border-color: #333;
+  color: #e0e0e0;
+}
+
+/* Header */
+.study-notes-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: move;
+  user-select: none;
+}
+
+.study-notes-title-container {
+  display: flex;
+  flex: 1;
+  gap: 8px;
+  align-items: center;
+}
+
+.study-notes-heading {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 6px;
+  color: white;
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: 500;
+  flex: 1;
+  min-width: 0;
+}
+
+.study-notes-heading::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.study-notes-heading:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.study-notes-controls {
+  display: flex;
+  gap: 4px;
+}
+
+.study-notes-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 6px;
+  color: white;
+  padding: 6px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.study-notes-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+.study-notes-btn:active {
+  transform: translateY(0);
+}
+
+/* Content Area */
+.study-notes-content {
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 60px);
+}
+
+/* Tabs */
+.study-notes-tabs {
+  display: flex;
+  background: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.dark-mode .study-notes-tabs {
+  background: #2d2d2d;
+  border-bottom-color: #404040;
+}
+
+.study-notes-tab {
+  flex: 1;
+  background: none;
+  border: none;
+  padding: 12px 8px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #666;
+  text-align: center;
+}
+
+.dark-mode .study-notes-tab {
+  color: #aaa;
+}
+
+.study-notes-tab:hover {
+  background: rgba(0, 0, 0, 0.05);
+  color: #333;
+}
+
+.dark-mode .study-notes-tab:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #ddd;
+}
+
+.study-notes-tab.active {
+  background: white;
+  color: #667eea;
+  font-weight: 600;
+  border-bottom: 2px solid #667eea;
+}
+
+.dark-mode .study-notes-tab.active {
+  background: #1e1e1e;
+  color: #81a1ff;
+  border-bottom-color: #81a1ff;
+}
+
+/* Tab Content */
+.study-notes-tab-content {
+  display: none;
+  flex-direction: column;
+  flex: 1;
+  padding: 16px;
+  overflow: hidden;
+}
+
+.study-notes-tab-content.active {
+  display: flex;
+}
+
+/* Toolbar */
+.study-notes-toolbar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.study-notes-toolbar .study-notes-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  font-size: 11px;
+  padding: 6px 10px;
+  border: none;
+  white-space: nowrap;
+}
+
+.study-notes-toolbar .study-notes-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+/* Textarea */
+.study-notes-textarea {
+  flex: 1;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  padding: 16px;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  resize: none;
+  outline: none;
+  transition: border-color 0.2s ease;
+  background: #fff;
+  min-height: 200px;
+}
+
+.study-notes-textarea:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.dark-mode .study-notes-textarea {
+  background: #2d2d2d;
+  border-color: #404040;
+  color: #e0e0e0;
+}
+
+.dark-mode .study-notes-textarea:focus {
+  border-color: #81a1ff;
+  box-shadow: 0 0 0 3px rgba(129, 161, 255, 0.1);
+}
+
+/* Footer */
+.study-notes-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #e9ecef;
+}
+
+.dark-mode .study-notes-footer {
+  border-top-color: #404040;
+}
+
+.study-notes-stats {
+  display: flex;
+  gap: 16px;
+  font-size: 11px;
+  color: #666;
+}
+
+.dark-mode .study-notes-stats {
+  color: #aaa;
+}
+
+.study-notes-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.save-btn {
+  background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%) !important;
+}
+
+.export-btn {
+  background: linear-gradient(135deg, #FF9800 0%, #f57c00 100%) !important;
+}
+
+/* Keywords Tab */
+.keywords-container h4,
+.history-container h4,
+.tags-container h4 {
+  margin: 0 0 16px 0;
+  color: #333;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.dark-mode .keywords-container h4,
+.dark-mode .history-container h4,
+.dark-mode .tags-container h4 {
+  color: #e0e0e0;
+}
+
+.keyword-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: #f8f9fa;
+  border-radius: 6px;
+  margin-bottom: 6px;
+}
+
+.dark-mode .keyword-item {
+  background: #2d2d2d;
+}
+
+.keyword-word {
+  font-weight: 500;
+  flex: 1;
+}
+
+.keyword-count {
+  background: #667eea;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 12px;
+  font-size: 10px;
+  margin: 0 8px;
+}
+
+.add-keyword-btn {
+  background: #4CAF50;
+  color: white;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+/* History Tab */
+.history-item {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 8px;
+  transition: all 0.2s ease;
+}
+
+.dark-mode .history-item {
+  background: #2d2d2d;
+}
+
+.history-item:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 6px;
+}
+
+.history-title {
+  font-weight: 500;
+  flex: 1;
+  margin-right: 8px;
+}
+
+.history-platform {
+  background: #667eea;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 12px;
+  font-size: 10px;
+}
+
+.history-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.dark-mode .history-meta {
+  color: #aaa;
+}
+
+.history-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.load-note-btn {
+  background: #4CAF50;
+  color: white;
+  border: none;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.delete-note-btn {
+  background: #f44336;
+  color: white;
+  border: none;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+/* Tags Tab */
+.tags-input-container {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.tags-input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 2px solid #e9ecef;
+  border-radius: 6px;
+  font-size: 13px;
+  outline: none;
+}
+
+.tags-input:focus {
+  border-color: #667eea;
+}
+
+.dark-mode .tags-input {
+  background: #2d2d2d;
+  border-color: #404040;
+  color: #e0e0e0;
+}
+
+.add-tag-btn {
+  background: #667eea;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.tag-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 20px;
+  margin: 4px 0;
+  font-size: 12px;
+}
+
+.tag-name {
+  font-weight: 500;
+}
+
+.remove-tag-btn {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.remove-tag-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Resize Handle */
+.study-notes-resize-handle {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  cursor: se-resize;
+  background: linear-gradient(-45deg, transparent 0%, transparent 40%, #ccc 40%, #ccc 50%, transparent 50%, transparent 90%, #ccc 90%);
+}
+
+.dark-mode .study-notes-resize-handle {
+  background: linear-gradient(-45deg, transparent 0%, transparent 40%, #666 40%, #666 50%, transparent 50%, transparent 90%, #666 90%);
+}
+
+/* Focus Mode Overlay */
+.study-notes-focus-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 9999;
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.focus-message {
+  background: white;
+  padding: 40px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  max-width: 400px;
+}
+
+.focus-message h2 {
+  margin: 0 0 16px 0;
+  color: #333;
+  font-size: 24px;
+}
+
+.focus-message p {
+  margin: 0 0 24px 0;
+  color: #666;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.focus-message button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.focus-message button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+/* Export Modal */
+.study-notes-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.study-notes-modal-content {
+  background: white;
+  border-radius: 16px;
+  padding: 32px;
+  max-width: 500px;
+  width: 90vw;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.dark-mode .study-notes-modal-content {
+  background: #2d2d2d;
+  color: #e0e0e0;
+}
+
+.study-notes-modal-content h3 {
+  margin: 0 0 24px 0;
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.export-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.export-btn-option {
+  background: #f8f9fa;
+  border: 2px solid #e9ecef;
+  border-radius: 12px;
+  padding: 16px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.export-btn-option:hover {
+  border-color: #667eea;
+  background: rgba(102, 126, 234, 0.05);
+}
+
+.export-btn-option.selected {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-color: transparent;
+}
+
+.dark-mode .export-btn-option {
+  background: #404040;
+  border-color: #555;
+  color: #e0e0e0;
+}
+
+.dark-mode .export-btn-option:hover {
+  border-color: #81a1ff;
+  background: rgba(129, 161, 255, 0.1);
+}
+
+.export-options {
+  margin-bottom: 24px;
+}
+
+.export-options label {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.export-options input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #667eea;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.cancel-btn {
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cancel-btn:hover {
+  background: #e9ecef;
+}
+
+.export-confirm-btn {
+  background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.export-confirm-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(76, 175, 80, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .study-notes-notepad {
+    width: calc(100vw - 20px) !important;
+    height: calc(100vh - 100px) !important;
+    left: 10px !important;
+    top: 80px !important;
+  }
+  
+  .study-notes-header {
+    padding: 8px 12px;
+  }
+  
+  .study-notes-heading {
+    font-size: 13px;
+    padding: 4px 8px;
+  }
+  
+  .study-notes-btn {
+    padding: 4px 8px;
+    font-size: 11px;
+  }
+  
+  .study-notes-toolbar {
+    flex-wrap: wrap;
+  }
+  
+  .study-notes-toolbar .study-notes-btn {
+    font-size: 10px;
+    padding: 4px 8px;
+  }
+  
+  .export-buttons {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Animations */
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.study-notes-notepad {
+  animation: slideInRight 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.study-notes-modal {
+  animation: fadeIn 0.2s ease;
+}
+
+/* Scrollbar Styling */
+.study-notes-textarea::-webkit-scrollbar,
+.study-notes-tab-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.study-notes-textarea::-webkit-scrollbar-track,
+.study-notes-tab-content::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.study-notes-textarea::-webkit-scrollbar-thumb,
+.study-notes-tab-content::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.study-notes-textarea::-webkit-scrollbar-thumb:hover,
+.study-notes-tab-content::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+.dark-mode .study-notes-textarea::-webkit-scrollbar-track,
+.dark-mode .study-notes-tab-content::-webkit-scrollbar-track {
+  background: #404040;
+}
+
+.dark-mode .study-notes-textarea::-webkit-scrollbar-thumb,
+.dark-mode .study-notes-tab-content::-webkit-scrollbar-thumb {
+  background: #666;
+}
+
+.dark-mode .study-notes-textarea::-webkit-scrollbar-thumb:hover,
+.dark-mode .study-notes-tab-content::-webkit-scrollbar-thumb:hover {
+  background: #777;
+}
+
+/* Platform-specific Enhancements */
+/* YouTube specific */
+body[data-study-notes-platform="youtube"] .study-notes-highlight {
+  background: linear-gradient(120deg, #ff6b6b 0%, #feca57 100%);
+}
+
+/* Udemy specific */
+body[data-study-notes-platform="udemy"] .study-notes-highlight {
+  background: linear-gradient(120deg, #a29bfe 0%, #fd79a8 100%);
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .study-notes-notepad,
+  .study-notes-modal,
+  .study-notes-btn,
+  .study-notes-highlight {
+    animation: none;
+    transition: none;
+  }
+}
+
+@media (prefers-high-contrast: high) {
+  .study-notes-notepad {
+    border: 2px solid #000;
+  }
+  
+  .study-notes-btn {
+    border: 1px solid #000;
+  }
+  
+  .study-notes-highlight {
+    background: #ffff00;
+    color: #000;
+    border: 1px solid #000;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .study-notes-notepad {
+    position: static;
+    width: 100% !important;
+    height: auto !important;
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+  
+  .study-notes-header,
+  .study-notes-tabs,
+  .study-notes-toolbar,
+  .study-notes-footer {
+    display: none;
+  }
+  
+  .study-notes-textarea {
+    border: none;
+    background: white;
+    color: black;
+  }
+}

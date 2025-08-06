@@ -1,0 +1,45 @@
+{
+  "manifest_version": 3,
+  "name": "StudyNotes Pro - Smart Student Note Taker",
+  "version": "1.0.0",
+  "description": "Advanced note-taking extension for students with auto-detection, keyword highlighting, and AI features for YouTube, Udemy, and web articles.",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "scripting",
+    "tabs",
+    "commands"
+  ],
+  "host_permissions": [
+    "https://*/*",
+    "http://*/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.youtube.com/*",
+        "https://www.udemy.com/*",
+        "https://chat.openai.com/*"
+      ],
+      "js": ["content.js"],
+      "css": ["style.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["injected.js"],
+      "matches": [
+        "https://www.youtube.com/*",
+        "https://www.udemy.com/*",
+        "https://chat.openai.com/*"
+      ]
+    }
+  ]
+}
